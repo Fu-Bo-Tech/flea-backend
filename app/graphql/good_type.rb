@@ -1,7 +1,8 @@
 GoodType = GraphQL::ObjectType.define do
   name 'Good'
+  interfaces [NodeIdentification.interface]
   description 'Information about good for bidding'
-  field :id, !types.ID, 'Unique id for this good'
+  global_id_field :id
   field :title, types.String, 'Title for this good'
   field :description, types.String, 'Description for this good'
   camelized_field :bidding_time, types.String, 'The the bidding finish time'

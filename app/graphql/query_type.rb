@@ -5,14 +5,14 @@ QueryType = GraphQL::ObjectType.define do
   field :good do
     type GoodType
     description 'Query good by its id'
-    argument :id, !types.ID
+    argument :id, !types.ID, 'Id of good'
     resolve -> (_, args, _) { Good.find(args['id']) }
   end
 
   field :goods do
     type types[GoodType]
     description 'Query all goods with limit'
-    argument :limit, types.Int, default_value: 20
+    argument :limit, types.Int, 'Number of response resources limit', default_value: 20
     resolve(
       lambda do |_, args, _|
         limit = [args[:limit], 30].min
@@ -20,4 +20,6 @@ QueryType = GraphQL::ObjectType.define do
       end
     )
   end
+
+  field :node, field: NodeIdentification.field
 end
