@@ -1,0 +1,6 @@
+<ul>
+	<% @products.each do |product| %>
+		<li> <%= link_to(product.title, account_product_path(product)) %> </li>
+	<% end %>
+	<%= link_to("Add", new_account_product_path,  class: "btn btn-primary btn-sm") %>
+</ul>

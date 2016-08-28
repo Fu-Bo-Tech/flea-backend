@@ -1,2 +1,0 @@
-class TestpageController < ApplicationController
-end
