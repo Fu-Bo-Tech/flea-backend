@@ -1,3 +1,7 @@
+<a href="https://codeclimate.com/github/Fu-Bo-Tech/flea-backend"><img src="https://codeclimate.com/github/Fu-Bo-Tech/flea-backend/badges/gpa.svg" /></a>
+<a href="https://codeclimate.com/github/Fu-Bo-Tech/flea-backend/coverage"><img src="https://codeclimate.com/github/Fu-Bo-Tech/flea-backend/badges/coverage.svg" /></a>
+<a href="https://codeclimate.com/github/Fu-Bo-Tech/flea-backend"><img src="https://codeclimate.com/github/Fu-Bo-Tech/flea-backend/badges/issue_count.svg" /></a>
+
 # README
 
 This README would normally document whatever steps are necessary to get the
