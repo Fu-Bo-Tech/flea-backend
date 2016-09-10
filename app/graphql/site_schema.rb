@@ -1,1 +1,1 @@
-SiteSchema = GraphQL::Schema.new(query: QueryType)
+SiteSchema = GraphQL::Schema.new(query: QueryType, mutation: MutationType)
