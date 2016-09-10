@@ -1,5 +1,12 @@
 source 'https://rubygems.org'
+
+gem "devise"
 ruby '2.3.1'
+
+
+gem 'settingslogic' #管理我們的秘密key
+
+gem 'omniauth-google-oauth2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
