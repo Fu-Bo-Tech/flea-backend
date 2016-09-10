@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   namespace :account do
   	resources :products
-  	resources :testpage
   end
 
   resources :products
