@@ -62,3 +62,6 @@ gem 'graphql'
 
 # Graphql IDE for browse api
 gem 'graphiql-rails'
+
+# Handle CORS
+gem 'rack-cors', require: 'rack/cors'
