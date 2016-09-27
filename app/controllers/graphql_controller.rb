@@ -2,7 +2,11 @@ class GraphqlController < ApplicationController
   def create
     query_string = params[:query]
     query_variables = ensure_hash(params[:variables])
-    result = SiteSchema.execute(query_string, variables: query_variables)
+    result = SiteSchema.execute(
+      query_string,
+      variables: query_variables,
+      context: { user: current_user }
+    )
     render json: result
   end
 
