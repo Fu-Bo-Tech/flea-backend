@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Good.create([
+              { title: 'car', description: 'super faster', bidding_time: DateTime.now },
+              { title: 'plane', description: 'WTF expensive', bidding_time: 2.days.ago }
+            ])
