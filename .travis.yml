@@ -1,0 +1,11 @@
+language: ruby
+sudo: false
+cache: bundler
+bundler_args: --retry=3 --jobs=3
+before_script:
+  - bin/setup
+  - bin/rake db:test:prepare
+rvm:
+  - 2.3.1
+matrix:
+  fast_finish: true

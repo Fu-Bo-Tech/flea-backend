@@ -65,3 +65,7 @@ gem 'graphiql-rails'
 
 # Handle CORS
 gem 'rack-cors', require: 'rack/cors'
+
+group :test do
+  gem 'codeclimate-test-reporter', require: false
+end
