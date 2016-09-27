@@ -52,6 +52,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Code quailty check
   gem 'rubocop', require: false
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -65,3 +66,6 @@ gem 'graphiql-rails'
 
 # Handle CORS
 gem 'rack-cors', require: 'rack/cors'
+
+gem 'devise_token_auth'
+gem 'omniauth-google-oauth2'
