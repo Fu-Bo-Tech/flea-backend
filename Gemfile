@@ -67,5 +67,9 @@ gem 'graphiql-rails'
 # Handle CORS
 gem 'rack-cors', require: 'rack/cors'
 
+# Authentication
 gem 'devise_token_auth'
 gem 'omniauth-google-oauth2'
+
+# for sensitive information
+gem 'figaro'
