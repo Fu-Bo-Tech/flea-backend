@@ -6,7 +6,9 @@ QueryType = GraphQL::ObjectType.define do
     type GoodType
     description 'Query good by its id'
     argument :id, !types.ID, 'Id of good'
-    resolve -> (_, args, _) { Good.find(args['id']) }
+    resolve -> (_, args, ctx) do
+      NodeIdentification.object_from_id(args[:id], ctx)
+    end
   end
 
   connection :myGoods, AllGoodsConnectionType, max_page_size: 50 do
