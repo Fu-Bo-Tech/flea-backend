@@ -9,4 +9,5 @@ GoodType = GraphQL::ObjectType.define do
   field :image, types.String, 'The url of image for this good'
   camelized_field :created_at, !types.String, 'The date of good creation time'
   camelized_field :updated_at, !types.String, 'The date of good info be updated'
+  field :owner, !UserType, 'The owner of good'
 end

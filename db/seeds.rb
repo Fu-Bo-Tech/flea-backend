@@ -5,8 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+alice = User.create!(email: 'alice@mail.com', name: 'Alice', password: '12345678', nickname: 'AAlice')
 
 Good.create([
-              { title: 'car', description: 'super faster', bidding_time: DateTime.now },
-              { title: 'plane', description: 'WTF expensive', bidding_time: 2.days.ago }
+              { title: 'car', description: 'super faster', bidding_time: DateTime.now, owner: alice },
+              { title: 'plane', description: 'WTF expensive', bidding_time: 2.days.ago, owner: alice }
             ])

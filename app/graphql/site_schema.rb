@@ -1,4 +1,4 @@
-SiteSchema = GraphQL::Schema.new(query: QueryType, mutation: MutationType)
+SiteSchema = GraphQL::Schema.new(query: QueryType, mutation: MutationType, max_depth: 10)
 SiteSchema.node_identification = NodeIdentification
 
 # Error handling

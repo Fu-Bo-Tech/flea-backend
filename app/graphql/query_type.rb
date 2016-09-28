@@ -17,7 +17,7 @@ QueryType = GraphQL::ObjectType.define do
     argument :before, types.String
     argument :first, types.Int
     argument :last, types.Int
-    resolve Auth.authenticate_user! do |_, _, ctx|
+    resolve Auth.query_authenticate_user! do |_, _, ctx|
       user = ctx[:current_user]
       user.goods
     end
@@ -31,6 +31,14 @@ QueryType = GraphQL::ObjectType.define do
     argument :last, types.Int
     resolve -> (_, _, _) do
       Good.all
+    end
+  end
+
+  field :user do
+    type UserType
+    description 'Query account info'
+    resolve Auth.query_authenticate_user! do |_, _, ctx|
+      ctx[:current_user]
     end
   end
 
