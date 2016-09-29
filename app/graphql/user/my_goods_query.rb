@@ -1,12 +1,11 @@
 MyGoodsQuery = GraphQL::Field.define do
-  type AllGoodsConnectionType
-  description 'Query user\'s goods'
+  type GoodsConnectionType
+  description 'User\'s goods'
   argument :after, types.String
   argument :before, types.String
   argument :first, types.Int
   argument :last, types.Int
-  resolve Auth.authenticate_user! -> (_, _, ctx) do
-    user = ctx[:current_user]
-    user.goods
+  resolve -> (obj, _, _) do
+    obj.goods
   end
 end

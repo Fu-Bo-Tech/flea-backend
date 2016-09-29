@@ -1,5 +1,5 @@
 AllGoodsQuery = GraphQL::Field.define do
-  type AllGoodsConnectionType
+  type GoodsConnectionType
   description 'Query all goods'
   argument :after, types.String
   argument :before, types.String
