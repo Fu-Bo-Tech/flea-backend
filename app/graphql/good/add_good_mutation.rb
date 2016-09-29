@@ -6,7 +6,7 @@ AddGoodMutation = GraphQL::Relay::Mutation.define do
   input_field :image, types.String, 'The url of image for this good'
 
   return_field :good, GoodType
-  resolve Auth.mutation_authenticate_user! do |inputs, ctx|
+  resolve Auth.authenticate_user! -> (inputs, ctx) do
     user = ctx[:current_user]
     good = user.goods.build(title: inputs[:title], description: inputs[:description], image: inputs[:image])
     good.save!
