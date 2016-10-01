@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :goods
+  has_many :biddings, -> { readonly }
   has_one :character
   delegate :name, to: :character, prefix: :fake
 

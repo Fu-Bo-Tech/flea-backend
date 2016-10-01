@@ -1,3 +1,4 @@
+# FIXME: extract out generator later.
 GoodsConnectionType = GoodType.define_connection do
   field :totalCount do
     type types.Int

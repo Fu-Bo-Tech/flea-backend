@@ -1,12 +1,11 @@
-# FIXME: extract out generator later.
-MyGoodsQuery = GraphQL::Field.define do
-  type GoodsConnectionType
-  description 'User\'s goods'
+GoodBiddingsQuery = GraphQL::Field.define do
+  type BiddingsConnectionType
+  description 'Good\'s biddings'
   argument :after, types.String
   argument :before, types.String
   argument :first, types.Int
   argument :last, types.Int
   resolve -> (obj, _, _) do
-    obj.goods
+    obj.biddings
   end
 end
