@@ -8,4 +8,11 @@ class User < ActiveRecord::Base
   has_many :goods
   has_one :character
   delegate :name, to: :character, prefix: :fake
+
+  before_create :assign_character
+
+  private
+  def assign_character
+    self.character = Character.take_free
+  end
 end
