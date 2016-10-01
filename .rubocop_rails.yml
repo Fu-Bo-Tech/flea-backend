@@ -43,3 +43,7 @@ Style/StringLiterals:
   Exclude:
     - 'config/environments/production.rb'
     - 'config/puma.rb'
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
