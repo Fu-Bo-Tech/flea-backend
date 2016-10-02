@@ -19,5 +19,4 @@ class Bidding < ApplicationRecord
   private def check_or_extend_bidding_time
     good.extend_bidding_time!(10) if good.bidding_time_left < 10
   end
-
 end

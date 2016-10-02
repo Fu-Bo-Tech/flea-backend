@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
 
   before_create :assign_character
 
-  private
-  def assign_character
+  private def assign_character
     self.character = Character.take_free
   end
 end
