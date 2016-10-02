@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001155336) do
+ActiveRecord::Schema.define(version: 20161002033445) do
 
   create_table "biddings", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 20161001155336) do
     t.index ["user_id"], name: "index_characters_on_user_id", unique: true
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "goods", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -40,6 +49,8 @@ ActiveRecord::Schema.define(version: 20161001155336) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.integer  "event_id"
+    t.index ["event_id"], name: "index_goods_on_event_id"
     t.index ["user_id"], name: "index_goods_on_user_id"
   end
 

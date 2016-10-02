@@ -8,7 +8,12 @@ AddGoodMutation = GraphQL::Relay::Mutation.define do
   return_field :good, GoodType
   resolve Auth.authenticate_user! -> (inputs, ctx) do
     user = ctx[:current_user]
-    good = user.goods.build(title: inputs[:title], description: inputs[:description], image: inputs[:image])
+    good = user.goods.build(
+      title:       inputs[:title],
+      description: inputs[:description],
+      image:       inputs[:image],
+      event_id:    Event.first.id
+    )
     good.save!
 
     { good: good }
