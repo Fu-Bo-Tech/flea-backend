@@ -5,7 +5,7 @@ class GraphqlController < ApplicationController
     result          = SiteSchema.execute(
       query_string,
       variables: query_variables,
-      context:   { user: current_user }
+      context:   { current_user: current_user }
     )
     render json: result
   end
