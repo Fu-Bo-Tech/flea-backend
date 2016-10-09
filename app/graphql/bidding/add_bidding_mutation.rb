@@ -8,7 +8,7 @@ AddBiddingMutation = GraphQL::Relay::Mutation.define do
   return_field :bidding, BiddingType
   resolve Auth.authenticate_user! -> (inputs, ctx) do
     user = ctx[:current_user]
-    good = Good.find(inputs[:id])
+    good = NodeIdentification.object_from_id(inputs[:id], ctx)
     bidding = good.biddings.build(amount: inputs[:amount], trash_word: inputs[:trashWord])
     bidding.user = user
     bidding.save!
