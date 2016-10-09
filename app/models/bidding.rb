@@ -12,7 +12,7 @@ class Bidding < ApplicationRecord
   end
 
   private def should_before_end_of_bidding_time
-    return if good.in_bidding_time?
+    return true if good.in_bidding_time?
     errors.add(:base, 'should bid before end of the bidding time!')
   end
 
