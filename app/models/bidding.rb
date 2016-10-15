@@ -1,4 +1,5 @@
 class Bidding < ApplicationRecord
+  EXTENDED_GAP = 10
   belongs_to :user
   belongs_to :good
 
@@ -7,8 +8,9 @@ class Bidding < ApplicationRecord
   after_create :check_or_extend_bidding_time
 
   private def should_be_greater_than_others
-    return true if good.max_bidding_amount < amount
-    errors.add(:amount, 'should be greater than other biddings!')
+    gap = good.extended? ? EXTENDED_GAP : 1
+    return true if good.max_bidding_amount + gap <= amount
+    errors.add(:amount, "should be greater than previous bidding for #{gap} NTD!")
   end
 
   private def should_before_end_of_bidding_time
@@ -17,6 +19,6 @@ class Bidding < ApplicationRecord
   end
 
   private def check_or_extend_bidding_time
-    good.extend_bidding_time!(10) if good.bidding_time_left < 10
+    good.check_or_extend_bidding_time!
   end
 end

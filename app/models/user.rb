@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
   delegate :name, to: :character, prefix: :fake
 
   before_create :assign_character
+  validate :only_accept_specific_email_domain
+
+  private def only_accept_specific_email_domain
+    return true if email =~ /@(happygorgi|hopebaytech).com/
+    errors.add(:email, 'should be happygorgi.com or hopebaytech.com domain')
+  end
 
   private def assign_character
     self.character = Character.take_free
