@@ -6,5 +6,5 @@ UpdateGoodMutation = GraphQL::Relay::Mutation.define do
   input_field :image, types.String, 'The url of image for this good'
 
   return_field :good, GoodType
-  resolve(UpdateResolver.new(:good))
+  resolve Auth.authenticate_user! UpdateResolver.new(:good)
 end

@@ -5,4 +5,6 @@ MutationType = GraphQL::ObjectType.define do
   field :addGood, field: AddGoodMutation.field
   field :updateGood, field: UpdateGoodMutation.field
   field :deleteGood, field: DeleteGoodMutation.field
+
+  field :addBidding, field: AddBiddingMutation.field
 end
