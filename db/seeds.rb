@@ -25,11 +25,11 @@ CHARACTER_NAMES.each do |name|
   Character.create!(name: name)
 end
 
-event = Event.create!(title: 'demo', start_time: DateTime.now, end_time: 1.day.from_now)
+Event.create!(title: 'demo', start_time: DateTime.now, end_time: 1.day.from_now)
 
-alice = User.create!(email: 'alice@mail.com', name: 'Alice', password: '12345678', nickname: 'AAlice')
-
-Good.create!([
-               { title: 'car', description: 'super faster', owner: alice, event: event },
-               { title: 'plane', description: 'WTF expensive', owner: alice, event: event }
-             ])
+# alice = User.create!(email: 'alice@mail.com', name: 'Alice', password: '12345678', nickname: 'AAlice')
+#
+# Good.create!([
+#                { title: 'car', description: 'super faster', owner: alice, event: event },
+#                { title: 'plane', description: 'WTF expensive', owner: alice, event: event }
+#              ])
