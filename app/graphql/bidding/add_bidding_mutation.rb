@@ -9,6 +9,7 @@ AddBiddingMutation = GraphQL::Relay::Mutation.define do
   resolve Auth.authenticate_user! -> (inputs, ctx) do
     user = ctx[:current_user]
     good = NodeIdentification.object_from_id(inputs[:id], ctx)
+    bidding = nil
     good.with_lock do
       bidding = good.biddings.build(amount: inputs[:amount], trash_word: inputs[:trashWord])
       bidding.user = user
