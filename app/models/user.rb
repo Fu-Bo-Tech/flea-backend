@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   private def only_accept_specific_email_domain
-    return true if email =~ /@(happygorgi|hopebaytech).com/
+    return true if ENV['ALL_DOMAIN'] || email =~ /@(happygorgi|hopebaytech).com/
     errors.add(:email, 'should be happygorgi.com or hopebaytech.com domain')
   end
 

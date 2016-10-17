@@ -1,6 +1,3 @@
 GOOGLE_CLIENT_ID: xxxxxxxxxxxxx
 GOOGLE_CLIENT_SECRET: xxxxxxxxxxxxxxxx
-
-
-
-
+ALL_DOMAIN: true
