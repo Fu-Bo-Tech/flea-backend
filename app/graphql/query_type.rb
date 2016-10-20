@@ -3,7 +3,7 @@ QueryType = GraphQL::ObjectType.define do
   description 'Its query root of schema'
 
   field :good, field: GoodQuery
-  connection :allGoods, field: AllGoodsQuery, max_page_size: 50
+  connection :allGoods, field: AllGoodsQuery
 
   field :user, field: UserQuery
 

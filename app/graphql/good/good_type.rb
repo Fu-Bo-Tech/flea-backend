@@ -11,6 +11,6 @@ GoodType = GraphQL::ObjectType.define do
   camelized_field :extended_count, types.Int, 'number of bidding time extended'
   camelized_field :created_at, !types.String, 'The date of good creation time'
   camelized_field :updated_at, !types.String, 'The date of good info be updated'
-  connection :allBiddings, field: GoodBiddingsQuery, max_page_size: 50
+  connection :allBiddings, field: GoodBiddingsQuery
   field :owner, !UserType, 'The owner of good'
 end

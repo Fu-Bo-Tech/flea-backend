@@ -5,8 +5,8 @@ UserType = GraphQL::ObjectType.define do
   global_id_field :id
   field :name, !types.String, 'Name of user'
   field :email, !types.String, 'Email of user'
-  connection :myGoods, field: MyGoodsQuery, max_page_size: 50
-  connection :joinedGoods, field: JoinedGoodsQuery, max_page_size: 50
-  connection :myBiddings, field: MyBiddingsQuery, max_page_size: 50
+  connection :myGoods, field: MyGoodsQuery
+  connection :joinedGoods, field: JoinedGoodsQuery
+  connection :myBiddings, field: MyBiddingsQuery
   camelized_field :fake_name, !types.String, 'Character name of user'
 end
