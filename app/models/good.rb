@@ -1,9 +1,9 @@
 class Good < ApplicationRecord
-  EXTEND_TIME_SERIES = [10, 5, 5, 3, 3, 3].freeze
+  EXTEND_TIME_SERIES = [3, 3, 3].freeze
   EXTEND_TIME_MIN = 1
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   belongs_to :event
-  has_many :biddings, -> { readonly }
+  has_many :biddings, -> { readonly; order('amount DESC') }
   validates_presence_of :owner
   before_create :init_bidding_time
 
@@ -21,6 +21,10 @@ class Good < ApplicationRecord
 
   def need_to_extended?
     bidding_time_left < calculate_extend_time([0, extended_count - 1].max)
+  end
+
+  def highest_bidding
+    biddings.first
   end
 
   private def extend_bidding_time!(len)

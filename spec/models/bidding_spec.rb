@@ -12,49 +12,37 @@ describe Bidding do
     context 'successful' do
       context 'near the end of bidding' do
 
-        it 'extend the bidding time for 10 minutes' do
-          Timecop.travel(end_time - 9.minutes)
+        it 'extend the bidding time for 3 minutes' do
+          Timecop.travel(end_time - 2.minutes)
           expect(car.bidding_time).to eq(end_time)
 
           Bidding.create!(user: bob, good: car, amount: 10)
           car.reload
-          expect(car.bidding_time).to eq(end_time + 10.minutes)
+          expect(car.bidding_time).to eq(end_time + 3.minutes)
           expect(car.extended_count).to eq(1)
         end
 
         context 'in 1st extended time period' do
-          it 'extend the bidding time for 5 minutes' do
+          it 'extend the bidding time for 3 minutes' do
             Timecop.travel(end_time + 1.minute)
-            car.update!(bidding_time: car.bidding_time + 10.minutes, extended_count: 1)
+            car.update!(bidding_time: car.bidding_time + 3.minutes, extended_count: 1)
             Bidding.create!(user: bob, good: car, amount: 10)
 
             car.reload
-            expect(car.bidding_time).to eq(end_time + 10.minutes + 5.minutes)
+            expect(car.bidding_time).to eq(end_time + 3.minutes + 3.minutes)
             expect(car.extended_count).to eq(2)
           end
         end
 
         context 'in 3rd extended time period' do
-          it 'extend the bidding time for 3 minutes' do
-            Timecop.travel(end_time + 16.minutes)
-            car.update!(bidding_time: car.bidding_time + 20.minutes, extended_count: 3)
-            Bidding.create!(user: bob, good: car, amount: 10)
-
-            car.reload
-            expect(car.bidding_time).to eq(end_time + 23.minutes)
-            expect(car.extended_count).to eq(4)
-          end
-        end
-
-        context 'in 6th extended time period' do
           it 'extend the bidding time for 1 minutes' do
-            Timecop.travel(end_time + 27.minutes)
-            car.update!(bidding_time: car.bidding_time + 29.minutes, extended_count: 6)
+            Timecop.travel(end_time + 8.minutes)
+            car.update!(bidding_time: car.bidding_time + 9.minutes, extended_count: 3)
             Bidding.create!(user: bob, good: car, amount: 10)
 
             car.reload
-            expect(car.bidding_time).to eq(end_time + 30.minutes)
-            expect(car.extended_count).to eq(7)
+            expect(car.bidding_time).to eq(end_time + 10.minutes)
+            expect(car.extended_count).to eq(4)
           end
         end
       end
@@ -73,8 +61,8 @@ describe Bidding do
 
         context 'extended period' do
           it 'adds errors, when bidding amount dose not over 10 NTD' do
-            Timecop.travel(end_time + 16.minutes)
-            car.update!(bidding_time: car.bidding_time + 20.minutes, extended_count: 3)
+            Timecop.travel(end_time + 8.minutes)
+            car.update!(bidding_time: car.bidding_time + 9.minutes, extended_count: 3)
             Bidding.create!(user: bob, good: car, amount: 10)
 
             expect { Bidding.create!(user: bob, good: car, amount: 15) }.to raise_error(ActiveRecord::RecordInvalid, /amount/i)
